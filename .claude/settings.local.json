@@ -9,7 +9,8 @@
       "PowerShell(gh auth status 2>&1)",
       "Bash(git remote *)",
       "Bash(git push *)",
-      "Bash(curl -s -I -H 'Authorization: Bearer __TRACKED_VAR__' https://api.github.com/user)"
+      "Bash(curl -s -I -H 'Authorization: Bearer __TRACKED_VAR__' https://api.github.com/user)",
+      "Bash(git -c credential.helper=\"\" push -u origin main)"
     ]
   }
 }
