@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>TRAV. — Stories of Banyuwangi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&display=swap" rel="stylesheet" />
+<script src="./js/image-slot.js"></script>
+<style>
+  :root {
+    --ink: #1d2a2e;
+    --ink-soft: #2a373b;
+    --paper: #ece6df;
+    --paper-warm: #e6dfd5;
+    --rose: #c5a89c;
+    --rose-strong: #b39487;
+    --sand: #d9c8bd;
+    --rule: rgba(29, 42, 46, 0.35);
+    --rule-soft: rgba(29, 42, 46, 0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(circle at 1px 1px, rgba(29,42,46,0.08) 1px, transparent 1.4px) 0 0/24px 24px,
+      var(--paper);
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* ===== top frame / nav ===== */
+  .frame-top {
+    padding: 28px 40px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Archivo", sans-serif;
+    font-weight: 800; font-size: 19px; letter-spacing: 0.02em;
+    text-decoration: none; color: var(--ink);
+  }
+  .logo .dot { color: var(--rose-strong); }
+  .nav { display: flex; align-items: center; gap: 36px; }
+  .nav a {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink); opacity: 0.65;
+    position: relative; padding-bottom: 3px;
+    transition: opacity 0.2s;
+  }
+  .nav a::after {
+    content: "";
+    position: absolute; left: 0; right: 100%; bottom: 0;
+    height: 1px; background: var(--ink);
+    transition: right 0.3s ease;
+  }
+  .nav a:hover { opacity: 1; }
+  .nav a:hover::after { right: 0; }
+  .nav a.active { opacity: 1; }
+  .nav a.active::after { right: 0; }
+  .btn-signup {
+    border: 1px solid var(--ink);
+    background: var(--ink); color: #f1ece8;
+    border-radius: 999px; padding: 11px 24px;
+    font-family: inherit; font-weight: 700; font-size: 12px;
+    letter-spacing: 0.14em; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-signup:hover { background: transparent; color: var(--ink); }
+
+  /* ===== editorial masthead ===== */
+  .masthead {
+    padding: 80px 40px 60px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 32px;
+  }
+  .masthead .left {
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    line-height: 2; opacity: 0.75;
+  }
+  .masthead .left strong { display: block; font-weight: 500; opacity: 1; }
+  .masthead .center { text-align: center; }
+  .eyebrow {
+    font-family: "Archivo", sans-serif;
+    font-weight: 600; font-size: 14px; letter-spacing: 0.5em;
+    text-transform: uppercase; margin-bottom: 18px; opacity: 0.85;
+  }
+  .masthead .title {
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 500;
+    font-size: clamp(80px, 11vw, 180px);
+    line-height: 0.9; letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .masthead .subtitle {
+    margin-top: 22px;
+    font-family: "DM Mono", monospace;
+    font-size: 12px; letter-spacing: 0.4em; text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .masthead .right {
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    line-height: 1.9; opacity: 0.75; text-align: right;
+  }
+  .masthead .right .num {
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 400;
+    font-size: 64px; letter-spacing: -0.02em;
+    line-height: 1; color: var(--ink);
+    margin-bottom: 14px; display: block; text-transform: none;
+  }
+
+  /* ===== editorial intro ===== */
+  .lede {
+    max-width: 1280px; margin: 64px auto 0; padding: 0 40px;
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 64px; align-items: start;
+  }
+  .lede .marg {
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    line-height: 1.9; opacity: 0.7;
+    border-top: 1px solid var(--rule); padding-top: 18px;
+  }
+  .lede p {
+    font-family: "Fraunces", serif;
+    font-weight: 400; font-size: 26px; line-height: 1.45;
+    letter-spacing: -0.005em; text-wrap: pretty; color: var(--ink-soft);
+  }
+  .lede p em { color: var(--rose-strong); }
+
+  /* ===== story sections ===== */
+  .story { max-width: 1280px; margin: 0 auto; padding: 120px 40px 0; }
+
+  .story-head {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 64px; align-items: baseline; margin-bottom: 56px;
+  }
+  .story-head .num {
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    border-top: 1px solid var(--ink); padding-top: 18px;
+  }
+  .story-head .num span { display: block; margin-top: 4px; opacity: 0.6; }
+  .story-head h2 {
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 500;
+    font-size: clamp(48px, 6vw, 96px);
+    line-height: 0.95; letter-spacing: -0.02em;
+    color: var(--ink); text-wrap: balance;
+  }
+  .story-head h2 .ord {
+    font-style: normal; font-weight: 400;
+    font-size: 0.4em; letter-spacing: 0.3em;
+    color: var(--rose-strong); display: block;
+    margin-bottom: 16px; text-transform: uppercase;
+  }
+
+  .body { display: grid; grid-template-columns: 200px 1fr; gap: 64px; align-items: start; }
+  .body .meta {
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    line-height: 2; opacity: 0.7;
+  }
+  .body .meta strong { display: block; font-weight: 500; opacity: 1; color: var(--ink); margin-bottom: 4px; }
+  .body .meta hr { border: none; border-top: 1px solid var(--rule-soft); margin: 18px 0; }
+
+  .prose { max-width: 760px; }
+  .prose p { font-size: 17px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 1.2em; text-wrap: pretty; }
+  .prose p.dropcap::first-letter {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+    font-size: 88px; float: left; line-height: 0.85;
+    margin: 6px 14px 0 -2px; color: var(--rose-strong);
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose em { font-family: "Fraunces", serif; font-style: italic; font-weight: 500; }
+
+  blockquote {
+    border-left: 1px solid var(--rose-strong);
+    padding: 4px 0 4px 28px; margin: 36px 0;
+    font-family: "Fraunces", serif;
+    font-style: italic; font-weight: 400;
+    font-size: 26px; line-height: 1.4;
+    color: var(--ink); text-wrap: pretty;
+  }
+  blockquote cite {
+    display: block; margin-top: 14px;
+    font-family: "DM Mono", monospace; font-style: normal;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.65;
+  }
+
+  /* image slot */
+  image-slot { --is-bg: var(--sand); --is-fg: var(--ink); }
+  .figure { margin: 48px 0 12px; }
+  .figure image-slot { width: 100%; height: 460px; }
+  .figure figcaption {
+    margin-top: 14px; font-family: "DM Mono", monospace;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    opacity: 0.65; display: flex; justify-content: space-between; gap: 24px;
+  }
+  .feature .figure image-slot { height: 560px; }
+
+  .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 48px 0 12px; }
+  .two-up image-slot { height: 360px; }
+
+  /* divider */
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 24px; margin: 80px 0 0; padding: 0 40px;
+  }
+  .divider::before, .divider::after {
+    content: ""; flex: 1; height: 1px; background: var(--rule); max-width: 480px;
+  }
+
+  /* index rail */
+  .index-rail { max-width: 1280px; margin: 120px auto 0; padding: 0 40px; }
+  .index-rail h3 {
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    border-top: 1px solid var(--ink); padding-top: 18px; margin-bottom: 28px;
+  }
+  .index-list {
+    display: grid; grid-template-columns: 60px 2fr 1fr 1fr 60px;
+    gap: 20px; align-items: center;
+    padding: 22px 0; border-bottom: 1px solid var(--rule-soft);
+    font-size: 14px; transition: padding 0.2s ease;
+    cursor: pointer; text-decoration: none; color: inherit;
+  }
+  .index-list:hover { padding-left: 8px; }
+  .index-list:first-of-type { border-top: 1px solid var(--rule-soft); }
+  .index-list .ord { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 0.2em; }
+  .index-list .name {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+    font-size: 28px; line-height: 1; letter-spacing: -0.01em;
+  }
+  .index-list .kind, .index-list .when {
+    font-family: "DM Mono", monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.65;
+  }
+  .index-list .arrow { text-align: right; font-family: "DM Mono", monospace; font-size: 14px; }
+
+  /* stat row */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; margin: 48px 0 24px; padding: 28px 0;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .stat .n {
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 500;
+    font-size: 56px; letter-spacing: -0.02em; line-height: 1; color: var(--rose-strong);
+  }
+  .stat .t { margin-top: 8px; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.75; }
+
+  /* footer */
+  .site-footer {
+    margin-top: 160px; padding: 56px 40px 40px;
+    border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px; align-items: end;
+    font-family: "DM Mono", monospace;
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  }
+  .site-footer .col strong { display: block; font-weight: 500; margin-bottom: 12px; opacity: 0.65; }
+  .site-footer .col p { line-height: 2; }
+  .site-footer .center { text-align: center; }
+  .site-footer .right { text-align: right; }
+  .site-footer a { text-decoration: none; }
+  .site-footer a:hover { color: var(--rose-strong); }
+
+  .astrolabe { color: var(--ink); opacity: 0.85; }
+  .feature .figure { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- Top nav -->
+<header class="frame-top">
+  <a class="logo" href="./index.html">
+    <svg width="30" height="30" viewBox="0 0 58 58" fill="none" stroke="#1d2a2e" stroke-width="1.3" aria-hidden="true">
+      <circle cx="29" cy="29" r="27"/>
+      <circle cx="29" cy="29" r="20"/>
+      <circle cx="29" cy="29" r="2.4" fill="#b39487" stroke="none"/>
+      <line x1="29" y1="0" x2="29" y2="9"/>
+      <line x1="29" y1="49" x2="29" y2="58"/>
+      <line x1="0" y1="29" x2="9" y2="29"/>
+      <line x1="49" y1="29" x2="58" y2="29"/>
+      <g stroke-width="1">
+        <line x1="29" y1="2" x2="29" y2="5"/>
+        <line x1="29" y1="53" x2="29" y2="56"/>
+        <line x1="2" y1="29" x2="5" y2="29"/>
+        <line x1="53" y1="29" x2="56" y2="29"/>
+        <line x1="9.4" y1="9.4" x2="11.5" y2="11.5"/>
+        <line x1="46.5" y1="46.5" x2="48.6" y2="48.6"/>
+        <line x1="9.4" y1="48.6" x2="11.5" y2="46.5"/>
+        <line x1="46.5" y1="11.5" x2="48.6" y2="9.4"/>
+      </g>
+      <line x1="29" y1="29" x2="44" y2="14" stroke-width="1.2"/>
+    </svg>
+    <span>TRAV<span class="dot">.</span></span>
+  </a>
+  <nav class="nav">
+    <a href="./index.html#destinations">Destinations</a>
+    <a href="./stories.html" class="active">Stories</a>
+    <a href="#">Login</a>
+    <button class="btn-signup" type="button">SIGN UP</button>
+  </nav>
+</header>
+
+<!-- Masthead -->
+<section class="masthead">
+  <div class="left">
+    <strong>Volume I</strong>
+    Folklore &amp; Field Notes
+    <br />
+    East Java · Indonesia
+  </div>
+  <div class="center">
+    <div class="eyebrow">— S T O R I E S —</div>
+    <h1 class="title">Banyuwangi.</h1>
+    <div class="subtitle">history · myth · legend</div>
+  </div>
+  <div class="right">
+    <span class="num">N°&nbsp;01</span>
+    Issued 09.05.2026
+    <br />
+    Five readings inside
+  </div>
+</section>
+
+<!-- Lede -->
+<section class="lede">
+  <aside class="marg">
+    Foreword
+    <br />
+    by the editor
+  </aside>
+  <p>
+    At the easternmost tip of Java, where the strait narrows into Bali and the volcanoes refuse to sleep, sits a regency whose name is itself a story — <em>banyu wangi</em>, the fragrant water. Before the highways, before the surfers and the sulfur miners, this was the seat of <em>Blambangan</em>, the last Hindu kingdom of Java, and a coastline thick with princes, priestesses, and the ghosts they left behind. What follows are five readings — origin myths, a forgotten war, a dance born of grief, a forest older than memory, and a flame that burns blue at the lip of a crater.
+  </p>
+</section>
+
+<!-- STORY 01 -->
+<article class="story feature">
+  <header class="story-head">
+    <div class="num">01<span>Origin</span></div>
+    <h2>
+      <span class="ord">— Origin of a Name —</span>
+      Banyu Wangi, <em>the fragrant water.</em>
+    </h2>
+  </header>
+
+  <div class="figure">
+    <image-slot id="story-01-hero" placeholder="Sri Tanjung illustration / wayang panel" shape="rect"></image-slot>
+    <figcaption>
+      <span>Fig. 01 — Sri Tanjung crossing the Yamadipati, after a Banyuwangi wayang panel</span>
+      <span>Place &amp; date unknown</span>
+    </figcaption>
+  </div>
+
+  <div class="body">
+    <aside class="meta">
+      <strong>Source</strong>
+      Oral tradition,
+      Babad Banyuwangi
+      <hr />
+      <strong>Setting</strong>
+      Kerajaan Sindureja
+      <br />
+      Pre-Islamic era
+      <hr />
+      <strong>Figures</strong>
+      Sri Tanjung
+      <br />
+      Patih Sidopekso
+      <br />
+      Raja Sulahkromo
+    </aside>
+    <div class="prose">
+      <p class="dropcap">
+        Long before the regency took its present shape, the kingdom of Sindureja was ruled by a king who coveted his minister's wife. <strong>Sri Tanjung</strong> was the bride of the patih <strong>Sidopekso</strong>, a warrior so devoted to his king that, when ordered on an impossible errand, he simply went. The king sent him into the forest to bring back a relic that did not exist. He hoped Sri Tanjung would be left alone long enough to be persuaded.
+      </p>
+      <p>
+        She refused. So the king, when the patih returned empty-handed, told a different story: that she had thrown herself at him in his absence, and that she was unfaithful. Sidopekso believed his king. He marched his wife to the bank of a black river, drew his blade, and accused her.
+      </p>
+      <blockquote>
+        "If the river runs foul when my blood enters it, I am guilty. If it runs <em>wangi</em> — fragrant — then know I was true, and that you were lied to."
+        <cite>— Sri Tanjung, before the cut</cite>
+      </blockquote>
+      <p>
+        He cut her down. The river received her. And — so the telling goes — the water did not blacken; it turned, suddenly and impossibly, sweet. The fragrance carried for days. Sidopekso, undone, named the place for what he had heard. <em>Banyu wangi.</em> Fragrant water. A monument to a man's mistake.
+      </p>
+      <p>
+        The story survives in a hundred versions — wayang, ketoprak, kindergarten murals — and locals will tell it to you with the small smile of a community that has long since absorbed its own founding tragedy. Whether you take it as history or parable, the lesson holds: this is a place named not for its kings, but for the woman they failed.
+      </p>
+    </div>
+  </div>
+</article>
+
+<div class="divider">
+  <svg class="astrolabe" width="46" height="46" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-width="1">
+    <circle cx="29" cy="29" r="27"/><circle cx="29" cy="29" r="20"/>
+    <circle cx="29" cy="29" r="2" fill="currentColor" stroke="none"/>
+    <line x1="29" y1="2" x2="29" y2="9"/><line x1="29" y1="49" x2="29" y2="56"/>
+    <line x1="2" y1="29" x2="9" y2="29"/><line x1="49" y1="29" x2="56" y2="29"/>
+    <line x1="29" y1="29" x2="44" y2="14"/>
+  </svg>
+</div>
+
+<!-- STORY 02 -->
+<article class="story">
+  <header class="story-head">
+    <div class="num">02<span>History</span></div>
+    <h2>
+      <span class="ord">— Last of the Hindu Kingdoms —</span>
+      The slow fall of <em>Blambangan.</em>
+    </h2>
+  </header>
+  <div class="body">
+    <aside class="meta">
+      <strong>Span</strong>
+      ca. 1294 — 1771
+      <hr />
+      <strong>Capital</strong>
+      Macan Putih
+      <br />
+      then Bayu, then Lateng
+      <hr />
+      <strong>Adversaries</strong>
+      Majapahit, Mataram,
+      <br />
+      VOC (Dutch Co.)
+    </aside>
+    <div class="prose">
+      <p class="dropcap">
+        While the rest of Java converted, mosque by mosque, through the fifteenth and sixteenth centuries, the eastern tip held out. <em>Blambangan</em> — sometimes Belambangan, sometimes Balambangan in the Dutch records — kept its Hindu rites, its Balinese alliances, and its stubborn, isolating geography of forest and volcano. For nearly three centuries it was the last functioning Hindu polity on Java, propped up at one moment by Bali, undermined the next by Mataram, and finally squeezed by a trading company that had decided the strait was too valuable to leave to a king.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">477<span style="font-size:0.4em;color:var(--ink);opacity:0.6;letter-spacing:0;">yr</span></div><div class="t">Of dynastic continuity</div></div>
+        <div class="stat"><div class="n">3</div><div class="t">Capitals, three exoduses</div></div>
+        <div class="stat"><div class="n">1771</div><div class="t">The last stand at Bayu</div></div>
+      </div>
+      <p>
+        The end was not a battle but a slow asphyxiation. The VOC contracted with the regents of Mataram, then with Buleleng across the strait, then ran out of patience and began to build forts on the coast itself. By the 1760s the court was a refugee government, moving inland with each Dutch advance, sustained by Balinese muscle and the loyalty of the <strong>Osing</strong> highlanders.
+      </p>
+      <p>
+        What it left behind, after the Dutch finally broke its back at Bayu, is everywhere. The Osing language — neither Javanese nor Balinese — is its grammar. The temples on the slopes of Ijen, half-overtaken by ferns, are its architecture. The defiance the regency still wears, more than two centuries on, is its temperament.
+      </p>
+    </div>
+  </div>
+</article>
+
+<div class="divider">
+  <svg class="astrolabe" width="46" height="46" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-width="1">
+    <circle cx="29" cy="29" r="27"/><circle cx="29" cy="29" r="20"/>
+    <circle cx="29" cy="29" r="2" fill="currentColor" stroke="none"/>
+    <line x1="29" y1="2" x2="29" y2="9"/><line x1="29" y1="49" x2="29" y2="56"/>
+    <line x1="2" y1="29" x2="9" y2="29"/><line x1="49" y1="29" x2="56" y2="29"/>
+    <line x1="29" y1="29" x2="44" y2="14"/>
+  </svg>
+</div>
+
+<!-- STORY 03 -->
+<article class="story">
+  <header class="story-head">
+    <div class="num">03<span>War</span></div>
+    <h2>
+      <span class="ord">— December, 1771 —</span>
+      <em>Puputan</em> Bayu.
+    </h2>
+  </header>
+  <div class="figure">
+    <image-slot id="story-03-hero" placeholder="Battlefield ridge / monument photo" shape="rect"></image-slot>
+    <figcaption>
+      <span>Fig. 02 — The ridge above the Sungai Bayu, where the line broke</span>
+      <span>Songgon, present day</span>
+    </figcaption>
+  </div>
+  <div class="body">
+    <aside class="meta">
+      <strong>Date</strong>
+      18 December 1771
+      <hr />
+      <strong>Commanders</strong>
+      Pangeran Jagapati
+      <br />
+      Pangeran Wilis
+      <br />
+      Mas Rempeg
+      <hr />
+      <strong>Outcome</strong>
+      Pyrrhic Dutch victory
+      <br />
+      End of Blambangan
+    </aside>
+    <div class="prose">
+      <p class="dropcap">
+        <em>Puputan</em> is a Balinese word, but the act it describes is older than the language. It means to finish — to fight to the last, in ceremonial dress, knowing the outcome. In December of 1771, after five years of running war against the VOC, the remnants of the Blambangan court and several thousand of its people massed on the ridges above Sungai Bayu and chose finishing over surrender.
+      </p>
+      <p>
+        The Dutch had brought cannons up the river and a treaty in writing. The terms were unambiguous: lay down arms, accept Company sovereignty, convert to Islam to align with the regents in the west. Pangeran Jagapati, leading the resistance with his brothers, returned the treaty unsigned. What followed was less a battle than a long week of fire and machete in monsoon mud.
+      </p>
+      <blockquote>
+        "Lebih baik mati berkalang tanah, daripada hidup bertekuk lutut."
+        <cite>— Inscription, Bayu Memorial, Songgon</cite>
+      </blockquote>
+      <p>
+        When the line finally broke, Jagapati was dead, Wilis was a fugitive on his way to Bali, and the Company held the regency in name. But the cost of taking it had been so steep — disease, ambush, the sheer logistic horror of the eastern forest — that the VOC effectively bankrupted the campaign and never again attempted to install direct rule that far east. Banyuwangi entered the colonial period not as a colony but as a wound.
+      </p>
+      <p>
+        Every December, on the eighteenth, the regency observes the day. The schoolchildren are taught the names. A small monument at Songgon, a stone obelisk carved with the inscription above, receives the year's wreaths.
+      </p>
+    </div>
+  </div>
+</article>
+
+<div class="divider">
+  <svg class="astrolabe" width="46" height="46" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-width="1">
+    <circle cx="29" cy="29" r="27"/><circle cx="29" cy="29" r="20"/>
+    <circle cx="29" cy="29" r="2" fill="currentColor" stroke="none"/>
+    <line x1="29" y1="2" x2="29" y2="9"/><line x1="29" y1="49" x2="29" y2="56"/>
+    <line x1="2" y1="29" x2="9" y2="29"/><line x1="49" y1="29" x2="56" y2="29"/>
+    <line x1="29" y1="29" x2="44" y2="14"/>
+  </svg>
+</div>
+
+<!-- STORY 04 -->
+<article class="story">
+  <header class="story-head">
+    <div class="num">04<span>Ritual</span></div>
+    <h2>
+      <span class="ord">— Dance of the Widow —</span>
+      <em>Gandrung,</em> the lure that fed a war.
+    </h2>
+  </header>
+  <div class="body">
+    <aside class="meta">
+      <strong>Form</strong>
+      Folk theatre / dance
+      <hr />
+      <strong>Origin</strong>
+      Post-1771
+      <br />
+      Osing villages
+      <hr />
+      <strong>UNESCO</strong>
+      Intangible heritage
+      <br />
+      candidate (regional)
+    </aside>
+    <div class="prose">
+      <p class="dropcap">
+        After Bayu, the survivors scattered into the forest. The Dutch garrisoned the lowlands. Crops failed. The story locals tell — and which the dance itself half-remembers — is that the women of the Osing villages began to dance their way through enemy camps, distracting soldiers and feeding the resistance hidden in the hills. Whatever the historical fraction, the dance that emerged kept that double character ever after: it is seductive, defiant, and deeply attentive to whoever is watching.
+      </p>
+      <div class="two-up">
+        <image-slot id="gandrung-1" placeholder="Gandrung dancer — gold headdress / sampur" shape="rect"></image-slot>
+        <image-slot id="gandrung-2" placeholder="Gamelan / kendang detail" shape="rect"></image-slot>
+      </div>
+      <p>
+        The lead dancer wears <em>omprok</em>, a gilt headdress that fans behind her like the spread tail of a peacock; a long sampur scarf is the instrument she uses to invite — or refuse — a partner from the audience. The music is its own beast, a hammered, off-kilter gamelan that sits closer to Balinese than to Solonese Java, all bronze and bamboo and the sudden bark of a kendang.
+      </p>
+      <p>
+        Once a year, on the regency's anniversary, the public square fills with a thousand dancers in formation. The image is by now the single most photographed thing in East Java. It is also, if you watch carefully, the closest thing the regency has to a national anthem: the body remembering a war the books had to be told about.
+      </p>
+    </div>
+  </div>
+</article>
+
+<div class="divider">
+  <svg class="astrolabe" width="46" height="46" viewBox="0 0 58 58" fill="none" stroke="currentColor" stroke-width="1">
+    <circle cx="29" cy="29" r="27"/><circle cx="29" cy="29" r="20"/>
+    <circle cx="29" cy="29" r="2" fill="currentColor" stroke="none"/>
+    <line x1="29" y1="2" x2="29" y2="9"/><line x1="29" y1="49" x2="29" y2="56"/>
+    <line x1="2" y1="29" x2="9" y2="29"/><line x1="49" y1="29" x2="56" y2="29"/>
+    <line x1="29" y1="29" x2="44" y2="14"/>
+  </svg>
+</div>
+
+<!-- STORY 05 -->
+<article class="story">
+  <header class="story-head">
+    <div class="num">05<span>Geography &amp; Myth</span></div>
+    <h2>
+      <span class="ord">— Forest &amp; Crater —</span>
+      <em>Alas Purwo</em> and the blue fire of Ijen.
+    </h2>
+  </header>
+  <div class="figure">
+    <image-slot id="story-05-hero" placeholder="Alas Purwo canopy / Ijen blue flame" shape="rect"></image-slot>
+    <figcaption>
+      <span>Fig. 03 — The southern peninsula seen from the karst ridge</span>
+      <span>Tegaldlimo, dawn</span>
+    </figcaption>
+  </div>
+  <div class="body">
+    <aside class="meta">
+      <strong>Alas Purwo</strong>
+      "First Forest"
+      <br />
+      43,420 ha
+      <hr />
+      <strong>Kawah Ijen</strong>
+      2,769 m
+      <br />
+      pH ≈ 0.5 (most acidic
+      <br />
+      crater lake on earth)
+      <hr />
+      <strong>Belief</strong>
+      Origin point of Java's
+      <br />
+      first emergence
+    </aside>
+    <div class="prose">
+      <p class="dropcap">
+        At the southern peninsula sits <em>Alas Purwo</em> — literally <em>the first forest</em>, the place older Javanese cosmology names as the spot from which the island first emerged from the sea. It is the kind of forest that <em>feels</em> older than the surrounding country: limestone caves with stalactite shrines, troops of macaques along the coastal road, and a stillness that the locals attribute to the Pancer monks and the ascetics who, even now, slip into the caves for forty-day retreats.
+      </p>
+      <p>
+        Up the ridge, twenty miles north as the eagle flies, the volcano <strong>Ijen</strong> exhales sulfur from a turquoise crater lake whose acidity will dissolve a coin. After dark, the gas combusts on contact with air and burns electric blue — a flame visible only between roughly two and four in the morning, only on clear nights, only from the lip of the caldera. Sulfur miners climb in before midnight with baskets and a damp cloth and walk eighty kilos out before dawn.
+      </p>
+      <blockquote>
+        Sing kuat ya teruskan, sing ora kuat ya turun.
+        <em>If you can keep going, keep going. If you can't, climb down.</em>
+        <cite>— A miner, on the trail above Paltuding</cite>
+      </blockquote>
+      <p>
+        Between the two — forest and crater, sea and sulfur — Banyuwangi sits like a hinge. It is the easternmost regency of Java, and on a clear day from the strait you can see Bali, lit pink, on the other side. The astrolabe, if you wanted one, is built into the geography. Stand on the beach at Pulau Merah, look east at sunrise, and you have everything the founding myth promised: fragrant water, distant island, a sky that begins again every morning.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- INDEX -->
+<section class="index-rail">
+  <h3>— Index of readings —</h3>
+  <a class="index-list" href="#">
+    <span class="ord">N° 01</span>
+    <span class="name"><em>Banyu wangi,</em> the fragrant water</span>
+    <span class="kind">Origin myth</span>
+    <span class="when">Pre-Islamic</span>
+    <span class="arrow">→</span>
+  </a>
+  <a class="index-list" href="#">
+    <span class="ord">N° 02</span>
+    <span class="name"><em>Blambangan,</em> the slow fall</span>
+    <span class="kind">Dynastic history</span>
+    <span class="when">1294 — 1771</span>
+    <span class="arrow">→</span>
+  </a>
+  <a class="index-list" href="#">
+    <span class="ord">N° 03</span>
+    <span class="name"><em>Puputan</em> Bayu</span>
+    <span class="kind">War &amp; resistance</span>
+    <span class="when">18 Dec 1771</span>
+    <span class="arrow">→</span>
+  </a>
+  <a class="index-list" href="#">
+    <span class="ord">N° 04</span>
+    <span class="name"><em>Gandrung,</em> the dance</span>
+    <span class="kind">Ritual / heritage</span>
+    <span class="when">Post-1771</span>
+    <span class="arrow">→</span>
+  </a>
+  <a class="index-list" href="#">
+    <span class="ord">N° 05</span>
+    <span class="name"><em>Alas Purwo</em> &amp; Ijen</span>
+    <span class="kind">Geography &amp; myth</span>
+    <span class="when">Now</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="col">
+    <strong>Trav.</strong>
+    <p>Bureau of Routes<br/>Est. 2026 · East Java</p>
+  </div>
+  <div class="col center">
+    <strong>This issue</strong>
+    <p>Vol. I · N° 01<br/>Five readings · 09.05.2026</p>
+  </div>
+  <div class="col right">
+    <strong>Elsewhere</strong>
+    <p>
+      <a href="https://www.instagram.com/_mmiftahus/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp;
+      <a href="https://astrolabs.my.id/" target="_blank" rel="noopener">Astrolabs</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/mmiftahus/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

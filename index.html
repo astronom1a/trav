@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <title>TRAV. — Explore Banyuwangi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       ANIMATED SIDE SCROLL BAR
+  ══════════════════════════════════════ -->
+  <div class="scroll-bar" id="scrollBar" aria-hidden="true">
+    <span class="scroll-bar__label" id="sbLabel">SCROLL</span>
+    <span class="scroll-bar__arrow" id="sbArrow"></span>
+    <div class="scroll-bar__track">
+      <div class="scroll-bar__fill" id="sbFill"></div>
+      <div class="scroll-bar__dot"  id="sbDot"></div>
+      <div class="scroll-bar__sections">
+        <span class="scroll-bar__sec-dot active" data-section="0"></span>
+        <span class="scroll-bar__sec-dot"        data-section="1"></span>
+        <span class="scroll-bar__sec-dot"        data-section="2"></span>
+        <span class="scroll-bar__sec-dot"        data-section="3"></span>
+      </div>
+    </div>
+    <span class="scroll-bar__pct" id="sbPct">0%</span>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       — HERO
+  ══════════════════════════════════════ -->
+  <section class="hero" id="home" data-section-index="0">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-slide active" style="background-image:url('./assets/banyuwangi.jpg')" data-loc="BANYUWANGI" data-coords="08°12'S · 114°22'E"></div>
+      <div class="hero__bg-slide" style="background-image:url('./assets/pulau-merah.jpg')" data-loc="PULAU MERAH" data-coords="08°34'S · 114°02'E"></div>
+      <div class="hero__bg-slide" style="background-image:url('./assets/kawah-ijen.jpg')" data-loc="KAWAH IJEN" data-coords="08°03'S · 114°14'E"></div>
+      <div class="hero__bg-slide" style="background-image:url('./assets/kawah-ijen-3.jpg')" data-loc="KAWAH IJEN" data-coords="08°03'S · 114°14'E"></div>
+      <div class="hero__bg-slide" style="background-image:url('./assets/baluran.jpg')" data-loc="BALURAN" data-coords="07°54'S · 114°31'E"></div>
+    </div>
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <!-- semua overlay content dibungkus .hero__content untuk parallax fade -->
+    <div class="hero__content">
+      <div class="leftrail" aria-hidden="true">
+        <span class="lbl">EAST&nbsp;JAVA&nbsp;·&nbsp;ID</span>
+        <span class="tick"></span>
+      </div>
+
+      <div class="caption">
+        <strong class="caption__loc">BANYUWANGI</strong>
+        <span class="caption__coords">08°12'S · 114°22'E</span>
+      </div>
+
+      <div class="hero__frame">
+        <header class="topbar">
+          <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 58 58" fill="none" stroke="#ece6df" stroke-width="1.2">
+              <circle cx="29" cy="29" r="27"/>
+              <circle cx="29" cy="29" r="20"/>
+              <circle cx="29" cy="29" r="2.4" fill="#b39487" stroke="none"/>
+              <line x1="29" y1="0" x2="29" y2="9"/>
+              <line x1="29" y1="49" x2="29" y2="58"/>
+              <line x1="0" y1="29" x2="9" y2="29"/>
+              <line x1="49" y1="29" x2="58" y2="29"/>
+              <g stroke-width="1">
+                <line x1="29" y1="2" x2="29" y2="5"/>
+                <line x1="29" y1="53" x2="29" y2="56"/>
+                <line x1="2" y1="29" x2="5" y2="29"/>
+                <line x1="53" y1="29" x2="56" y2="29"/>
+                <line x1="9.4" y1="9.4" x2="11.5" y2="11.5"/>
+                <line x1="46.5" y1="46.5" x2="48.6" y2="48.6"/>
+                <line x1="9.4" y1="48.6" x2="11.5" y2="46.5"/>
+                <line x1="46.5" y1="11.5" x2="48.6" y2="9.4"/>
+              </g>
+              <line x1="29" y1="29" x2="44" y2="14" stroke-width="1.2"/>
+            </svg>
+            <span class="logo__word">TRAV<span class="logo__dot">.</span></span>
+          </div>
+          <nav class="nav">
+            <a href="#destinations">Destinations</a>
+            <a href="./stories.html">Stories</a>
+            <a href="#journal">Login</a>
+            <button class="btn-signup" type="button">SIGN UP</button>
+          </nav>
+        </header>
+
+        <div class="hero__body">
+          <div class="eyebrow">E&nbsp;X&nbsp;P&nbsp;L&nbsp;O&nbsp;R&nbsp;E</div>
+          <h1 class="hero__title">
+            Banyuwangi
+            <span class="sub">— THE&nbsp;SUNRISE&nbsp;OF&nbsp;JAVA —</span>
+          </h1>
+        </div>
+
+        <footer class="bottombar">
+          <!-- "now" = slide ke-1, "total" = diisi JS dari jumlah .dest-card -->
+          <div class="counter">
+            <span class="now">01</span>
+            <span class="slash">/</span>
+            <span class="total">--</span>
+          </div>
+          <div class="copy">©&nbsp;2026&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://astrolabs.my.id/" target="_blank" rel="noopener">ASTROLABS&nbsp;STUDIO</a></div>
+          <div class="socials">
+            <a href="https://www.instagram.com/_mmiftahus/" target="_blank" rel="noopener">Instagram</a>
+            <a href="#">Behance</a>
+            <a href="https://www.linkedin.com/in/mmiftahus/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       — DESTINATIONS
+  ══════════════════════════════════════ -->
+  <section class="destinations" id="destinations" data-section-index="1">
+    <p class="sec-tag" data-reveal>— Featured Destinations</p>
+    <h2 class="sec-title" data-reveal data-delay="1">Where to<br>Begin.</h2>
+
+    <div class="dest-grid">
+
+      <div class="dest-card dest-card--slider" data-reveal data-delay="1">
+        <div class="dest-card__slides">
+          <div class="dest-card__slide active" style="background-image:url('../assets/kawah-ijen.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://unsplash.com/@fariezxyz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Fariez Nurkholiq</a> · <a href="https://unsplash.com/photos/body-of-water-during-daytime-00c1oHuQsnI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Unsplash</a></span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/kawah-ijen-2.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://unsplash.com/@p_kuzovkova?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Polina Kuzovkova</a> · <a href="https://unsplash.com/photos/a-tree-with-no-leaves-n3ZMbA78qnY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Unsplash</a></span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/kawah-ijen-3.jpg')">
+            <span class="dest-card__credit">Photo: Sylvester Chong / Getty Images</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/kawah-ijen-4.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+        </div>
+        <div class="dest-card__dots">
+          <span class="dest-card__dot active"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+        </div>
+        <span class="dest-card__num">01</span>
+        <div class="dest-card__info">
+          <span class="dest-card__name">Kawah Ijen</span>
+          <span class="dest-card__meta">Blue Fire · 2,799 m</span>
+        </div>
+      </div>
+
+      <div class="dest-card dest-card--slider" data-reveal data-delay="2">
+        <div class="dest-card__slides">
+          <div class="dest-card__slide active" style="background-image:url('../assets/baluran.jpg')">
+            <span class="dest-card__credit">Photo: Mike Aquino</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/baluran-2.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/baluran-3.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/baluran-4.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/baluran-5.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+        </div>
+        <div class="dest-card__dots">
+          <span class="dest-card__dot active"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+        </div>
+        <span class="dest-card__num">02</span>
+        <div class="dest-card__info">
+          <span class="dest-card__name">Baluran</span>
+          <span class="dest-card__meta">National Park · Savana</span>
+        </div>
+      </div>
+
+      <div class="dest-card dest-card--slider" data-reveal data-delay="3">
+        <div class="dest-card__slides">
+          <div class="dest-card__slide active" style="background-image:url('../assets/pulau-merah.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/pulau-merah-2.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/pulau-merah-3.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/pulau-merah-4.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/pulau-merah-5.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://www.instagram.com/rido_bangun/" target="_blank" rel="noopener">@rido_bangun</a> · Instagram</span>
+          </div>
+          <div class="dest-card__slide" style="background-image:url('../assets/pulau-merah-6.jpg')">
+            <span class="dest-card__credit">Photo: <a href="https://unsplash.com/@saidalamri63?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">said alamri</a> · <a href="https://unsplash.com/photos/mountain-under-cloudy-sky-UpWeoXDl9lg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Unsplash</a></span>
+          </div>
+        </div>
+        <div class="dest-card__dots">
+          <span class="dest-card__dot active"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+          <span class="dest-card__dot"></span>
+        </div>
+        <span class="dest-card__num">03</span>
+        <div class="dest-card__info">
+          <span class="dest-card__name">Pulau Merah</span>
+          <span class="dest-card__meta">Red Island · Surfing</span>
+        </div>
+      </div>
+
+      <!-- tambah .dest-card di sini → counter hero otomatis bertambah -->
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       — STORY
+  ══════════════════════════════════════ -->
+  <section class="story" id="stories" data-section-index="2">
+    <p class="sec-tag" data-reveal>— The Story</p>
+    <div class="story-grid">
+      <h2 class="story__headline" data-reveal data-delay="1">
+        A land where<br>fire meets<br>the sea.
+      </h2>
+      <div class="story__body" data-reveal data-delay="2">
+        <p>Banyuwangi sits at Java's easternmost tip — where the Indian Ocean meets the Bali Strait, and volcanic craters glow electric blue at midnight.</p>
+        <p>From the mythic Blue Fire of Kawah Ijen to the wild savannas of Baluran, this is Indonesia's best-kept secret, waiting to be explored on your terms.</p>
+        <a href="#journal" class="btn-outline">Read the Journal</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+        — JOURNAL
+  ══════════════════════════════════════ -->
+  <section class="journal" id="journal" data-section-index="3">
+    <div class="journal-item" data-reveal>
+      <div class="journal-item__date">May 2026</div>
+      <div class="journal-item__title">Chasing Blue Fire at 2 AM</div>
+      <div class="journal-item__desc">A midnight trek into one of the world's rarest volcanic phenomena — the sulfuric blue flames of Kawah Ijen.</div>
+      <a href="#" class="journal-item__link">Read more</a>
+    </div>
+    <div class="journal-item" data-reveal data-delay="1">
+      <div class="journal-item__date">Apr 2026</div>
+      <div class="journal-item__title">Baluran: Java's Little Africa</div>
+      <div class="journal-item__desc">Savannas, banteng, and dry monsoon winds — how one national park redefines what Java can look like.</div>
+      <a href="#" class="journal-item__link">Read more</a>
+    </div>
+    <div class="journal-item" data-reveal data-delay="2">
+      <div class="journal-item__date">Mar 2026</div>
+      <div class="journal-item__title">Surf & Culture at Pulau Merah</div>
+      <div class="journal-item__desc">Indonesia's Red Island offers left-hand breaks, a Hindu temple at the water's edge, and near-zero crowds.</div>
+      <a href="#" class="journal-item__link">Read more</a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <svg width="28" height="28" viewBox="0 0 58 58" fill="none" stroke="#b39487" stroke-width="1.2">
+        <circle cx="29" cy="29" r="27"/>
+        <circle cx="29" cy="29" r="20"/>
+        <circle cx="29" cy="29" r="2.4" fill="#b39487" stroke="none"/>
+        <line x1="29" y1="0" x2="29" y2="9"/>
+        <line x1="29" y1="49" x2="29" y2="58"/>
+        <line x1="0" y1="29" x2="9" y2="29"/>
+        <line x1="49" y1="29" x2="58" y2="29"/>
+        <g stroke-width="1">
+          <line x1="29" y1="2" x2="29" y2="5"/>
+          <line x1="29" y1="53" x2="29" y2="56"/>
+          <line x1="2" y1="29" x2="5" y2="29"/>
+          <line x1="53" y1="29" x2="56" y2="29"/>
+          <line x1="9.4" y1="9.4" x2="11.5" y2="11.5"/>
+          <line x1="46.5" y1="46.5" x2="48.6" y2="48.6"/>
+          <line x1="9.4" y1="48.6" x2="11.5" y2="46.5"/>
+          <line x1="46.5" y1="11.5" x2="48.6" y2="9.4"/>
+        </g>
+        <line x1="29" y1="29" x2="44" y2="14" stroke-width="1.2"/>
+      </svg>
+      <span class="logo__word">TRAV<span class="logo__dot">.</span></span>
+    </div>
+    <nav class="footer-nav">
+      <a href="#destinations">Destinations</a>
+      <a href="#stories">Stories</a>
+      <a href="#journal">Journal</a>
+      <a href="#">Contact</a>
+    </nav>
+    <span class="footer-copy">© 2026 <a href="https://astrolabs.my.id/" target="_blank" rel="noopener">ASTROLABS STUDIO</a></span>
+  </footer>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
