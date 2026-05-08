@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx vite *)",
+      "PowerShell(Get-ChildItem \"F:\\\\Project\\\\CODING\\\\trav\" | Where-Object { $_.Name -ne \"node_modules\" } | ForEach-Object { \"$\\($_.Name\\) - $\\($_.PSIsContainer\\)\" })",
+      "PowerShell($start = Get-Date; do { Start-Sleep -Seconds 3 } until \\(\\(Test-Path \"F:\\\\Project\\\\CODING\\\\trav\\\\assets\\\\kawah-ijen-3.jpg\"\\) -or \\(\\(Get-Date\\) - $start\\).TotalSeconds -gt 120\\); Test-Path \"F:\\\\Project\\\\CODING\\\\trav\\\\assets\\\\kawah-ijen-3.jpg\")",
+      "Bash(gh auth *)",
+      "PowerShell(gh auth status 2>&1)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(curl -s -I -H 'Authorization: Bearer __TRACKED_VAR__' https://api.github.com/user)"
+    ]
+  }
+}
