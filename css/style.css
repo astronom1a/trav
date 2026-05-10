@@ -240,6 +240,7 @@ body {
   margin-bottom: -0.2em;
   opacity: 0;
   animation: fadeUp 0.9s 0.5s ease forwards;
+  transition: color 0.7s ease;
 }
 
 .hero__title {
@@ -248,11 +249,25 @@ body {
   font-size: clamp(64px, 11vw, 176px);
   letter-spacing: 0.01em;
   line-height: 0.92;
-  color: var(--rose);
-  text-shadow: 0 4px 48px rgba(8,14,16,0.35);
   opacity: 0;
   animation: fadeUp 0.9s 0.65s ease forwards;
 }
+
+/* ── per-character: dua tipe, flip saat tema berganti ── */
+.char {
+  display: inline;
+  transition:
+    color 0.55s ease,
+    -webkit-text-stroke-color 0.55s ease,
+    -webkit-text-stroke-width 0.55s ease;
+  transition-delay: var(--char-delay, 0s);
+}
+
+/* Area gelap di bawah huruf → outline */
+.char[data-type="dark"]  { color: transparent; -webkit-text-stroke: 2px var(--rose); }
+
+/* Area terang di bawah huruf → fill solid gelap */
+.char[data-type="light"] { color: var(--ink);  -webkit-text-stroke: 0px; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -267,7 +282,14 @@ body {
   letter-spacing: 0.5em;
   color: rgba(240,235,231,0.55);
   margin-top: 20px;
+  transition: color 0.6s ease;
 }
+
+.hero--light-bg .hero__title .sub {
+  color: rgba(29,42,46,0.55);
+}
+
+.hero--light-bg .eyebrow { color: rgba(29,42,46,0.6); }
 
 /* ── side rails ── */
 .leftrail {
